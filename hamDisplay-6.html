@@ -1,0 +1,307 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--HAMSHACK DASHBOARD DISPLAY-->
+<!--(C)2023 DAVID GOLD N2MXX-->
+<!--OK TO CHANGE IMAGE URLs AND DESCRIPTION TAGS-->
+<!--OK TO DISTRIBUTE WITHOUT CHANGES TO THE COPYRIGHT OR DISPLAY CODE-->
+
+<script>
+  
+function SetUTCOffset(){
+  //**** UTC OFFSET (HOURS) **********************************************************************************************
+  window.UTCOffsetValue = 5;
+
+  //**** BUTTONS ON THE BOTTOM **********************************************************************************************
+  //**** N3ILS added ********************************************************************************************************
+  window.ReferenceTitleA = "CCARS";
+  window.ReferenceURLA = "https://w3eoc.org/calendar/";
+//  window.ReferenceTitleA = "ECARS";
+//  window.ReferenceURLA = "http://www.ecars7255.com/NCS_Sched/Sched.html";
+
+  window.ReferenceTitleB = "RADAR";
+  window.ReferenceURLB = "https://moe.met.fsu.edu/~mnissenbaum/RadarArchive/KDIX/loop.html";
+
+  window.ReferenceTitleC = "POTA";
+  window.ReferenceURLC = "https://pota.app/#/";
+
+  window.ReferenceTitleD = "CONTEST";
+  window.ReferenceURLD = "https://www.contestcalendar.com/fivewkcal.html";
+
+  window.ReferenceTitleE = "SWL";
+  window.ReferenceURLE = "https://www.short-wave.info/index.php?language=english";
+
+  window.ReferenceTitleF = "NETLOGGER";
+  window.ReferenceURLF = "https://netlogger.org/";
+
+  //**** REFERENCE - CYCLE THROUGH THESE IMAGES ********************************************************************
+  window.ReferenceImageA = "https://www.w9dup.org/images/grid_square_map_1.png";
+  window.ReferenceImageB = "http://www4.plala.or.jp/nomrax/GL/index.gif";
+  window.ReferenceImageC = "https://www.mapability.com/ei8ic/maps/prefix/maps/north_america.gif";
+  window.ReferenceImageD = "https://www.mapability.com/ei8ic/maps/IARU_Regions_01.png";
+  window.ReferenceImageE = "https://www.arrl.org/images/view/News/Amateur%20Radio%20Allocations%20Apr%202017.jpg";
+}
+
+function DefineImageURLs(){
+ //**** IMAGE URLs REFRESH TIMER (MINUTES) ***************************************************************************
+ window.RefreshMinutes = 5;
+
+ //**** 6 or 12 IMAGES? ***************************************************************************
+ window.TwelveImages = false;
+ //If false, then dashboard will display Image A, B, C, E, F, G
+
+ //**** IMAGE URLs **********************************************************************************************
+document.getElementById('ImageA').src="https://www.hamqsl.com/solar101vhf.php";
+document.getElementById('TitleA').textContent="";
+//document.getElementById('TitleA').textContent="HF PROPAGATION";
+
+document.getElementById('ImageB').src="https://www.wpc.ncep.noaa.gov//noaa/noaa.gif";
+document.getElementById('TitleB').textContent="USA FORECAST";
+
+document.getElementById('ImageC').src="https://radar.weather.gov/ridge/standard/CONUS_loop.gif";
+document.getElementById('TitleC').textContent="USA RADAR";
+
+document.getElementById('ImageD').src="https://services.swpc.noaa.gov/images/animations/d-rap/global/d-rap/latest.png";
+document.getElementById('TitleD').textContent="NOAA D-RAP";
+
+document.getElementById('ImageE').src="https://www.dxinfocentre.com/tr_map/fcst/eam006.png";
+document.getElementById('TitleE').textContent="TROPO DUCTING";
+
+document.getElementById('ImageF').src="https://cdn.star.nesdis.noaa.gov/GOES16/GLM/CONUS/EXTENT3/GOES16-CONUS-EXTENT3-625x375.gif";
+document.getElementById('TitleF').textContent="SATELLITE-USA";
+
+document.getElementById('ImageG').src="https://prop.kc2g.com/renders/current/mufd-normal-now.svg";
+document.getElementById('TitleG').textContent="MUF";
+
+document.getElementById('ImageH').src="https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa";
+document.getElementById('TitleH').textContent="USA LIGHTNING";
+
+document.getElementById('ImageI').src="https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544";
+document.getElementById('TitleI').textContent="ISS POSITION";
+
+document.getElementById('ImageJ').src="https://www.timeanddate.com/scripts/sunmap.php?iso=now";
+document.getElementById('TitleJ').textContent="GREY LINE MAP";
+
+document.getElementById('ImageK').src="https://ds.iris.edu/seismon/views/eveday_big//imgs/topMap.eveday_big.gif";
+document.getElementById('TitleK').textContent="SEISMIC ACTIVITY";
+
+document.getElementById('ImageL').src="https://www.tvcomm.co.uk/g7izu/Autosave/NA_ES_AutoSave.JPG";
+document.getElementById('TitleL').textContent="10M PROPAGATION";
+
+
+}
+</script>
+
+
+
+<style>
+
+body {
+    background: black;
+  font-size: 100%;
+}
+
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #17D4FE;
+    font-size: 100%;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+   
+
+
+}
+
+
+
+
+.imagecontainer {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: table-cell;
+  //float: left;
+ // margin-right: 5%;
+ border:3px solid black;
+}
+.imagetitle {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  font-size: 1.2vw;
+  border-left: .5vw solid black;
+  border-right: .5vw solid black;
+  font-family: monospace, Monaco, sans-serif;
+}
+
+
+
+
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.auto-style1 {
+font:Arial;
+font-family: monospace, Monaco, sans-serif;
+	color: #FFFFFF;
+	font-size: 3vw;
+	}
+	.auto-style2 {
+	font-family: monospace, Monaco, sans-serif;
+	font-size: 3vw;	}
+		.auto-style3 {
+		font-family: monospace, Monaco, sans-serif;
+	color: #624977;
+	font-size: 4.2vw;	
+	}
+			.auto-style4 {
+			font-family: monospace, Monaco, sans-serif;
+	color: LightSalmon;
+	font-size: 3vw;
+	}
+			.auto-style3a {
+			font-family: monospace, Monaco, sans-serif;
+	color: #624977;
+	font-size: 2.0vw;
+	}
+			.auto-style4a {
+			font-family: monospace, Monaco, sans-serif;
+	color: LightSalmon;
+	font-size: 2.0vw;
+	}
+
+</style>
+
+
+<script>
+
+(function(_0x28c8fb,_0x19a253){var _0x478818=_0x2da8,_0x19aea6=_0x28c8fb();while(!![]){try{var _0x5b2af0=parseInt(_0x478818(0x18c))/0x1+parseInt(_0x478818(0x19c))/0x2*(-parseInt(_0x478818(0x1ad))/0x3)+-parseInt(_0x478818(0x187))/0x4*(parseInt(_0x478818(0x18a))/0x5)+parseInt(_0x478818(0x1a6))/0x6*(parseInt(_0x478818(0x19a))/0x7)+parseInt(_0x478818(0x1cd))/0x8*(-parseInt(_0x478818(0x1b8))/0x9)+-parseInt(_0x478818(0x185))/0xa*(parseInt(_0x478818(0x19f))/0xb)+parseInt(_0x478818(0x1ef))/0xc*(parseInt(_0x478818(0x1dc))/0xd);if(_0x5b2af0===_0x19a253)break;else _0x19aea6['push'](_0x19aea6['shift']());}catch(_0x5d0e64){_0x19aea6['push'](_0x19aea6['shift']());}}}(_0x1a2d,0x5bbf2));function showTime(){var _0x3cafb6=_0x2da8,_0x117c79=window['UTCOffsetValue'],_0x26e52b=new Date(),_0x1bb1f3=_0x26e52b['getHours'](),_0xc40686=_0x26e52b[_0x3cafb6(0x19d)](),_0x910bb2=_0x26e52b['getSeconds'](),_0xf208e3='AM',_0x59dc13=new Date()[_0x3cafb6(0x1a2)](),_0x4b1f6f=new Date(_0x59dc13+_0x117c79*0x3c*0x3c*0x3e8),_0x2614c0=_0x4b1f6f['toLocaleDateString']('en-us',{'weekday':_0x3cafb6(0x1c9),'year':'numeric','month':_0x3cafb6(0x1c9),'day':'numeric'}),_0x474145=_0x26e52b[_0x3cafb6(0x1dd)]();_0x1bb1f3==0x0&&(_0x1bb1f3=0xc);_0x1bb1f3>0xc&&(_0x1bb1f3=_0x1bb1f3-0xc,_0xf208e3='PM');_0x1bb1f3=_0x1bb1f3<0xa?'0'+_0x1bb1f3:_0x1bb1f3,_0xc40686=_0xc40686<0xa?'0'+_0xc40686:_0xc40686,_0x910bb2=_0x910bb2<0xa?'0'+_0x910bb2:_0x910bb2,_0x474145=_0x474145+_0x117c79;_0x474145>0x17&&(_0x474145=_0x474145-0x18);var _0x1e241a='';_0x474145<0xa&&(_0x1e241a='0');var _0x3bc2b5='\x20'+_0x1bb1f3+':'+_0xc40686,_0x120cf5=_0x3cafb6(0x1b9)+_0x1e241a+_0x474145+':'+_0xc40686;document[_0x3cafb6(0x1f2)]('UTCdisplay')['innerText']=_0x120cf5,document[_0x3cafb6(0x1f2)](_0x3cafb6(0x193))[_0x3cafb6(0x1ec)]=_0x3bc2b5,document[_0x3cafb6(0x1f2)]('DATEdisplay')['textContent']=_0x2614c0,document['getElementById'](_0x3cafb6(0x18e))[_0x3cafb6(0x195)]=':'+_0x910bb2,document[_0x3cafb6(0x1f2)](_0x3cafb6(0x1c3))[_0x3cafb6(0x195)]=':'+_0x910bb2,document[_0x3cafb6(0x1f2)](_0x3cafb6(0x1e1))[_0x3cafb6(0x1ec)]=_0xf208e3;var _0x215ae7=String[_0x3cafb6(0x1ce)](0x28,0x63,0x29,0x32,0x30,0x32,0x33,0x20,0x4e,0x32,0x4d,0x58,0x58),_0x3e1e13=Math[_0x3cafb6(0x1ea)]((window[_0x3cafb6(0x1a8)]*0xea60-(performance[_0x3cafb6(0x19b)]()-window[_0x3cafb6(0x1be)]))/0x3e8);const _0x369c66=Math[_0x3cafb6(0x1de)](_0x3e1e13/0x3c),_0x11acd6=_0x3e1e13-_0x369c66*0x3c;if(isNaN(_0x369c66))var _0xa3cd75=_0x3cafb6(0x197);else{if(_0x11acd6>=0xa)var _0xa3cd75=_0x369c66+':'+_0x11acd6;else var _0xa3cd75=_0x369c66+':'+'0'+_0x11acd6;}var _0x3be8da=0x64-Math[_0x3cafb6(0x1ea)](_0x3e1e13/(window[_0x3cafb6(0x1a8)]*0x3c)*0x64);_0x3be8da>=0x0&&_0x3be8da<=0x64&&(document[_0x3cafb6(0x1f2)]('remainingTime')[_0x3cafb6(0x1a1)]=_0x3be8da),document['getElementById'](_0x3cafb6(0x189))['textContent']=_0x215ae7,document['getElementById']('programVersion')[_0x3cafb6(0x1ec)]=_0x3cafb6(0x1a7),setTimeout(showTime,0x3e8);}var ButtonURLOne='X',ButtonURLTwo='X',ButtonURLThree='X',ButtonURLFour='X',ButtonURLFive='X',ButtonURLSix='X',ButtonURLSeven='X';function updateA(){var _0x4451fa=_0x2da8;DefineImageURLs(),document['getElementById'](_0x4451fa(0x194))[_0x4451fa(0x1ec)]=_0x4451fa(0x18f),document['getElementById'](_0x4451fa(0x1e5))[_0x4451fa(0x1ec)]=window['ReferenceTitleA'],document['getElementById'](_0x4451fa(0x1c6))[_0x4451fa(0x1ec)]=window[_0x4451fa(0x18b)],document[_0x4451fa(0x1f2)](_0x4451fa(0x1c5))[_0x4451fa(0x1ec)]=window['ReferenceTitleC'],document[_0x4451fa(0x1f2)]('buttonFive')[_0x4451fa(0x1ec)]=window[_0x4451fa(0x1cf)],document[_0x4451fa(0x1f2)]('buttonSix')[_0x4451fa(0x1ec)]=window[_0x4451fa(0x190)],document[_0x4451fa(0x1f2)](_0x4451fa(0x192))[_0x4451fa(0x1ec)]=window[_0x4451fa(0x1ca)],clearTimeout(window['refreshImageTimer']),window[_0x4451fa(0x1b5)]=setTimeout(reloadpage,0xea60*window[_0x4451fa(0x1a8)]),window['ImageTimerStart']=performance['now']();}function reloadpage(){var _0x18a67e=_0x2da8;location[_0x18a67e(0x1a5)]();}function start(){var _0x46a046=_0x2da8;SetUTCOffset(),window[_0x46a046(0x1bb)]=0x0,window[_0x46a046(0x1a4)]=0x0,window[_0x46a046(0x1b5)]=0x0,document[_0x46a046(0x1f2)]('URLframe')['height']=0x0,document[_0x46a046(0x1f2)](_0x46a046(0x1e0))[_0x46a046(0x1e6)]=0x0,document[_0x46a046(0x1f2)](_0x46a046(0x1e0))[_0x46a046(0x1c7)][_0x46a046(0x19e)]=_0x46a046(0x1e4),largeShow=0x0,showTime(),updateA(),hideButtons(),SixPerScreenFunction(),document[_0x46a046(0x1f2)](_0x46a046(0x1b0))[_0x46a046(0x1d3)]('error',imageNotFound),document[_0x46a046(0x1f2)]('ImageB')[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document[_0x46a046(0x1f2)](_0x46a046(0x188))[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document[_0x46a046(0x1f2)]('ImageD')[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document[_0x46a046(0x1f2)](_0x46a046(0x1ee))[_0x46a046(0x1d3)]('error',imageNotFound),document[_0x46a046(0x1f2)]('ImageF')[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document['getElementById']('ImageG')[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document[_0x46a046(0x1f2)](_0x46a046(0x1c8))[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document[_0x46a046(0x1f2)]('ImageI')[_0x46a046(0x1d3)]('error',imageNotFound),document[_0x46a046(0x1f2)](_0x46a046(0x1e3))[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),document[_0x46a046(0x1f2)](_0x46a046(0x1cc))['addEventListener'](_0x46a046(0x1d9),imageNotFound),document['getElementById'](_0x46a046(0x1cb))[_0x46a046(0x1d3)](_0x46a046(0x1d9),imageNotFound),window[_0x46a046(0x1d3)](_0x46a046(0x1bd),refreshFunction);}function SixPerScreenFunction(){var _0x53f3d5=_0x2da8,_0x1b0577=0.8,_0x126c0f=window[_0x53f3d5(0x1c2)],_0x1bbf76=window[_0x53f3d5(0x1da)];window[_0x53f3d5(0x1b7)]?(document['getElementById'](_0x53f3d5(0x1b0))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)]('ImageB')[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x188))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)]('ImageD')['width']=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1ee))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document['getElementById'](_0x53f3d5(0x1b1))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x196))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document['getElementById']('ImageH')['width']=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x198))['width']=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1e3))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1cc))[_0x53f3d5(0x1e6)]=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)]('ImageL')['width']=_0x126c0f/0x4*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1b0))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)]('ImageB')[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x188))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document['getElementById']('ImageD')[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)]('ImageE')[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1b1))['height']=_0x1bbf76/0x3*_0x1b0577,document['getElementById'](_0x53f3d5(0x196))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)]('ImageH')[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x198))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document['getElementById'](_0x53f3d5(0x1e3))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1cc))['height']=_0x1bbf76/0x3*_0x1b0577,document['getElementById'](_0x53f3d5(0x1cb))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x3*_0x1b0577):(document[_0x53f3d5(0x1f2)]('ImageA')['width']=_0x126c0f/0x3*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1ae))['width']=_0x126c0f/0x3*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x188))[_0x53f3d5(0x1e6)]=_0x126c0f/0x3*0.97,document[_0x53f3d5(0x1f2)]('ImageD')[_0x53f3d5(0x1e6)]=0x0,document['getElementById'](_0x53f3d5(0x1ee))['width']=_0x126c0f/0x3*0.97,document[_0x53f3d5(0x1f2)]('ImageF')['width']=_0x126c0f/0x3*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x196))[_0x53f3d5(0x1e6)]=_0x126c0f/0x3*0.97,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1c8))[_0x53f3d5(0x1e6)]=0x0,document['getElementById']('ImageI')[_0x53f3d5(0x1e6)]=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1e3))['width']=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1cc))[_0x53f3d5(0x1e6)]=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1cb))[_0x53f3d5(0x1e6)]=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1b0))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x2*_0x1b0577,document['getElementById']('ImageB')[_0x53f3d5(0x1e2)]=_0x1bbf76/0x2*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x188))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x2*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1a3))[_0x53f3d5(0x1e2)]=0x0,document[_0x53f3d5(0x1f2)]('ImageE')[_0x53f3d5(0x1e2)]=_0x1bbf76/0x2*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1b1))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x2*_0x1b0577,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x196))[_0x53f3d5(0x1e2)]=_0x1bbf76/0x2*_0x1b0577,document[_0x53f3d5(0x1f2)]('ImageH')[_0x53f3d5(0x1e2)]=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x198))[_0x53f3d5(0x1e2)]=0x0,document[_0x53f3d5(0x1f2)]('ImageJ')[_0x53f3d5(0x1e2)]=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1cc))[_0x53f3d5(0x1e2)]=0x0,document[_0x53f3d5(0x1f2)]('ImageL')[_0x53f3d5(0x1e2)]=0x0,document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1d5))[_0x53f3d5(0x1a9)]=!![],document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1d8))['hidden']=!![],document[_0x53f3d5(0x1f2)](_0x53f3d5(0x1d7))[_0x53f3d5(0x1a9)]=!![],document[_0x53f3d5(0x1f2)]('TitleJ')['hidden']=!![],document['getElementById'](_0x53f3d5(0x1db))['hidden']=!![],document['getElementById'](_0x53f3d5(0x1e9))[_0x53f3d5(0x1a9)]=!![]);}function imageNotFound(){setTimeout(updateA,0x1388);}function refreshFunction(){var _0x4c48da=_0x2da8;window[_0x4c48da(0x1ba)](0x0,0x0),window[_0x4c48da(0x1c4)](screen['availWidth'],screen[_0x4c48da(0x1df)]),SixPerScreenFunction(),updateA();}function HideMatrix(){var _0x31abc1=_0x2da8;document[_0x31abc1(0x1f2)](_0x31abc1(0x1b0))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)]('ImageB')[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x188))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1a3))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1ee))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1b1))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)]('ImageG')[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1c8))[_0x31abc1(0x1e2)]=0x0,document['getElementById'](_0x31abc1(0x198))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)]('ImageJ')[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)]('ImageK')[_0x31abc1(0x1e2)]=0x0,document['getElementById'](_0x31abc1(0x1cb))[_0x31abc1(0x1e2)]=0x0,document[_0x31abc1(0x1f2)]('ImageA')[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)]('ImageB')[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x188))[_0x31abc1(0x1e6)]=0x0,document['getElementById'](_0x31abc1(0x1a3))[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1ee))[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1b1))[_0x31abc1(0x1e6)]=0x0,document['getElementById'](_0x31abc1(0x196))[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1c8))[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x198))[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1e3))['width']=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1cc))[_0x31abc1(0x1e6)]=0x0,document['getElementById'](_0x31abc1(0x1cb))[_0x31abc1(0x1e6)]=0x0,document[_0x31abc1(0x1f2)](_0x31abc1(0x1ed))['textContent']='',document['getElementById'](_0x31abc1(0x1eb))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)]('TitleC')[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)]('TitleD')[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)](_0x31abc1(0x18d))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)](_0x31abc1(0x1bc))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)](_0x31abc1(0x1f1))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)](_0x31abc1(0x1d8))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)](_0x31abc1(0x1d7))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)]('TitleJ')['textContent']='',document[_0x31abc1(0x1f2)](_0x31abc1(0x1db))[_0x31abc1(0x1ec)]='',document[_0x31abc1(0x1f2)](_0x31abc1(0x1e9))[_0x31abc1(0x1ec)]='';}function largeA(){var _0x912d33=_0x2da8,_0xc028f=![];if(window['referenceImageTimer']>0x0)clearTimeout(window[_0x912d33(0x1b5)]),clearTimeout(window[_0x912d33(0x1bb)]),window['refreshImageTimer']=setTimeout(reloadpage,0xea60*0x5),window[_0x912d33(0x1a4)]==0x1&&_0xc028f==![]&&(window[_0x912d33(0x1a4)]=0x2,document[_0x912d33(0x1f2)](_0x912d33(0x1b0))[_0x912d33(0x1f0)]=window[_0x912d33(0x1d1)],_0xc028f=!![],clearTimeout(window[_0x912d33(0x1bb)]),window['referenceImageTimer']=window[_0x912d33(0x1bf)](start,0x3e8*0x14)),window[_0x912d33(0x1a4)]==0x2&&_0xc028f==![]&&(window[_0x912d33(0x1a4)]=0x3,document[_0x912d33(0x1f2)]('ImageA')['src']=window[_0x912d33(0x186)],_0xc028f=!![],clearTimeout(window[_0x912d33(0x1bb)]),window[_0x912d33(0x1bb)]=window[_0x912d33(0x1bf)](start,0x3e8*0x14)),window[_0x912d33(0x1a4)]==0x3&&_0xc028f==![]&&(window[_0x912d33(0x1a4)]=0x4,document[_0x912d33(0x1f2)](_0x912d33(0x1b0))['src']=window[_0x912d33(0x1a0)],_0xc028f=!![],clearTimeout(window['referenceImageTimer']),window[_0x912d33(0x1bb)]=window['setTimeout'](start,0x3e8*0x14)),window[_0x912d33(0x1a4)]==0x4&&_0xc028f==![]&&(window[_0x912d33(0x1a4)]=0x5,document[_0x912d33(0x1f2)](_0x912d33(0x1b0))[_0x912d33(0x1f0)]=window[_0x912d33(0x1af)],_0xc028f=!![],clearTimeout(window[_0x912d33(0x1bb)]),window['referenceImageTimer']=window['setTimeout'](start,0x3e8*0x14)),window['referenceImageNumber']==0x5&&_0xc028f==![]&&(window[_0x912d33(0x1a4)]=0x1,document[_0x912d33(0x1f2)](_0x912d33(0x1b0))[_0x912d33(0x1f0)]=window[_0x912d33(0x191)],_0xc028f=!![],clearTimeout(window[_0x912d33(0x1bb)]),window[_0x912d33(0x1bb)]=window[_0x912d33(0x1bf)](start,0x3e8*0x14));else{if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1;var _0x4ef428=window[_0x912d33(0x1c2)],_0x508646=window[_0x912d33(0x1da)];HideMatrix(),document[_0x912d33(0x1f2)](_0x912d33(0x1b0))[_0x912d33(0x1e6)]=_0x4ef428,document[_0x912d33(0x1f2)](_0x912d33(0x1b0))[_0x912d33(0x1e2)]=_0x508646,clearTimeout(window[_0x912d33(0x1b5)]),clearTimeout(window[_0x912d33(0x1bb)]),window[_0x912d33(0x1b5)]=setTimeout(reloadpage,0x3e8*0x14);}}}function largeB(){var _0xc59c3e=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1;var _0x208eb8=window[_0xc59c3e(0x1c2)],_0xae4ad6=window[_0xc59c3e(0x1da)];HideMatrix(),document['getElementById'](_0xc59c3e(0x1ae))[_0xc59c3e(0x1e6)]=_0x208eb8,document[_0xc59c3e(0x1f2)]('ImageB')[_0xc59c3e(0x1e2)]=_0xae4ad6,clearTimeout(window[_0xc59c3e(0x1b5)]),clearTimeout(window[_0xc59c3e(0x1bb)]),window['refreshImageTimer']=setTimeout(start,0x3e8*0x14);}}function largeC(){var _0x157abe=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1;var _0x1bee41=window[_0x157abe(0x1c2)],_0x2e2dd0=window[_0x157abe(0x1da)];HideMatrix(),document[_0x157abe(0x1f2)]('ImageC')[_0x157abe(0x1e6)]=_0x1bee41,document[_0x157abe(0x1f2)]('ImageC')[_0x157abe(0x1e2)]=_0x2e2dd0,clearTimeout(window['refreshImageTimer']),clearTimeout(window[_0x157abe(0x1bb)]),window['refreshImageTimer']=setTimeout(start,0x3e8*0x14);}}function largeD(){var _0x453751=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x4ca20e=window[_0x453751(0x1c2)],_0x21b790=window[_0x453751(0x1da)];document[_0x453751(0x1f2)](_0x453751(0x1a3))['width']=_0x4ca20e,document['getElementById'](_0x453751(0x1a3))['height']=_0x21b790,clearTimeout(window[_0x453751(0x1b5)]),clearTimeout(window[_0x453751(0x1bb)]),window[_0x453751(0x1b5)]=setTimeout(start,0x3e8*0x14);}}function largeE(){var _0x4eb19b=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x5e03a3=window['innerWidth'],_0x2184c7=window[_0x4eb19b(0x1da)];document[_0x4eb19b(0x1f2)]('ImageE')[_0x4eb19b(0x1e6)]=_0x5e03a3,document[_0x4eb19b(0x1f2)]('ImageE')[_0x4eb19b(0x1e2)]=_0x2184c7,clearTimeout(window[_0x4eb19b(0x1b5)]),clearTimeout(window[_0x4eb19b(0x1bb)]),window['refreshImageTimer']=setTimeout(start,0x3e8*0x14);}}function largeF(){var _0x255765=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x1605c1=window[_0x255765(0x1c2)],_0x529e63=window['innerHeight'];document['getElementById']('ImageF')[_0x255765(0x1e6)]=_0x1605c1,document[_0x255765(0x1f2)](_0x255765(0x1b1))[_0x255765(0x1e2)]=_0x529e63,clearTimeout(window[_0x255765(0x1b5)]),clearTimeout(window[_0x255765(0x1bb)]),window['refreshImageTimer']=setTimeout(start,0x3e8*0x14);}}function largeG(){var _0x33fb9f=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x155929=window[_0x33fb9f(0x1c2)],_0x109515=window['innerHeight'];document[_0x33fb9f(0x1f2)](_0x33fb9f(0x196))[_0x33fb9f(0x1e6)]=_0x155929,document[_0x33fb9f(0x1f2)]('ImageG')[_0x33fb9f(0x1e2)]=_0x109515,clearTimeout(window[_0x33fb9f(0x1b5)]),clearTimeout(window[_0x33fb9f(0x1bb)]),window['refreshImageTimer']=setTimeout(start,0x3e8*0x14);}}function largeH(){var _0x2ae4dc=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x108b10=window[_0x2ae4dc(0x1c2)],_0x2edf52=window[_0x2ae4dc(0x1da)];document[_0x2ae4dc(0x1f2)](_0x2ae4dc(0x1c8))[_0x2ae4dc(0x1e6)]=_0x108b10,document['getElementById'](_0x2ae4dc(0x1c8))['height']=_0x2edf52,clearTimeout(window['refreshImageTimer']),clearTimeout(window[_0x2ae4dc(0x1bb)]),window[_0x2ae4dc(0x1b5)]=setTimeout(start,0x3e8*0x14);}}function largeI(){var _0x56a34d=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x28d128=window[_0x56a34d(0x1c2)],_0x2f27b8=window[_0x56a34d(0x1da)];document[_0x56a34d(0x1f2)](_0x56a34d(0x198))['width']=_0x28d128,document[_0x56a34d(0x1f2)](_0x56a34d(0x198))[_0x56a34d(0x1e2)]=_0x2f27b8,clearTimeout(window[_0x56a34d(0x1b5)]),clearTimeout(window['referenceImageTimer']),window[_0x56a34d(0x1b5)]=setTimeout(start,0x3e8*0x14);}}function _0x2da8(_0x3166ad,_0x50b29e){var _0x1a2d5c=_0x1a2d();return _0x2da8=function(_0x2da8e0,_0x21000c){_0x2da8e0=_0x2da8e0-0x185;var _0x17bcee=_0x1a2d5c[_0x2da8e0];return _0x17bcee;},_0x2da8(_0x3166ad,_0x50b29e);}function largeJ(){var _0x2d4b52=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x121af4=window[_0x2d4b52(0x1c2)],_0x5ca8ae=window[_0x2d4b52(0x1da)];document[_0x2d4b52(0x1f2)]('ImageJ')[_0x2d4b52(0x1e6)]=_0x121af4,document[_0x2d4b52(0x1f2)](_0x2d4b52(0x1e3))['height']=_0x5ca8ae,clearTimeout(window[_0x2d4b52(0x1b5)]),clearTimeout(window[_0x2d4b52(0x1bb)]),window[_0x2d4b52(0x1b5)]=setTimeout(start,0x3e8*0x14);}}function largeK(){var _0x20ea1a=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x236dc3=window[_0x20ea1a(0x1c2)],_0x24d5dc=window[_0x20ea1a(0x1da)];document[_0x20ea1a(0x1f2)]('ImageK')['width']=_0x236dc3,document[_0x20ea1a(0x1f2)](_0x20ea1a(0x1cc))[_0x20ea1a(0x1e2)]=_0x24d5dc,clearTimeout(window['refreshImageTimer']),clearTimeout(window[_0x20ea1a(0x1bb)]),window[_0x20ea1a(0x1b5)]=setTimeout(start,0x3e8*0x14);}}function largeL(){var _0x3a16c3=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix();var _0x44071e=window['innerWidth'],_0x32d726=window['innerHeight'];document['getElementById']('ImageL')[_0x3a16c3(0x1e6)]=_0x44071e,document[_0x3a16c3(0x1f2)](_0x3a16c3(0x1cb))[_0x3a16c3(0x1e2)]=_0x32d726,clearTimeout(window['refreshImageTimer']),clearTimeout(window[_0x3a16c3(0x1bb)]),window['refreshImageTimer']=setTimeout(start,0x3e8*0x14);}}function largeBandplan(){var _0xd04b93=_0x2da8;if(largeShow==0x1)largeShow=0x0,start();else{largeShow=0x1,HideMatrix(),clearTimeout(window[_0xd04b93(0x1b5)]),clearTimeout(window[_0xd04b93(0x1bb)]);var _0x4b6560=window[_0xd04b93(0x1c2)],_0x1ff11f=window[_0xd04b93(0x1da)];document['getElementById'](_0xd04b93(0x1b0))['src']=_0xd04b93(0x1c0),document[_0xd04b93(0x1f2)](_0xd04b93(0x1b0))[_0xd04b93(0x1e6)]=_0x4b6560,document[_0xd04b93(0x1f2)](_0xd04b93(0x1b0))['height']=_0x1ff11f,window[_0xd04b93(0x1bb)]=setTimeout(start,0x3e8*0x14),window[_0xd04b93(0x1a4)]=0x1;}}function ButtonTwoWindow(){var _0x20c62f=_0x2da8;document['getElementById'](_0x20c62f(0x1e0))['style']['display']=_0x20c62f(0x1d6);var _0x31d7e0=window[_0x20c62f(0x1c2)],_0x49ef22=window['innerHeight'];HideMatrix(),document[_0x20c62f(0x1f2)]('URLframe')[_0x20c62f(0x1e2)]=_0x49ef22,document['getElementById'](_0x20c62f(0x1e0))[_0x20c62f(0x1e6)]=_0x31d7e0,document[_0x20c62f(0x1f2)](_0x20c62f(0x1e0))[_0x20c62f(0x1f0)]='https://w3eoc.org/calendar/',setTimeout(start,0x3e8*0x14);}function NJRadarWindow(){var _0x11a401=_0x2da8;document[_0x11a401(0x1f2)](_0x11a401(0x1e0))[_0x11a401(0x1c7)][_0x11a401(0x19e)]=_0x11a401(0x1d6);var _0x5c570c=window[_0x11a401(0x1c2)],_0x568cb4=window['innerHeight'];HideMatrix(),document[_0x11a401(0x1f2)](_0x11a401(0x1e0))[_0x11a401(0x1e2)]=_0x568cb4,document[_0x11a401(0x1f2)](_0x11a401(0x1e0))[_0x11a401(0x1e6)]=_0x5c570c,document['getElementById'](_0x11a401(0x1e0))[_0x11a401(0x1f0)]=_0x11a401(0x1b3),setTimeout(start,0x3e8*0x14);}function POTAWindow(){var _0x2e29dc=_0x2da8;document[_0x2e29dc(0x1f2)](_0x2e29dc(0x1e0))[_0x2e29dc(0x1c7)][_0x2e29dc(0x19e)]=_0x2e29dc(0x1d6);var _0x5497f8=window['innerWidth'],_0x1c2c66=window['innerHeight'];HideMatrix(),document[_0x2e29dc(0x1f2)](_0x2e29dc(0x1e0))[_0x2e29dc(0x1e2)]=_0x1c2c66,document[_0x2e29dc(0x1f2)](_0x2e29dc(0x1e0))['width']=_0x5497f8,document[_0x2e29dc(0x1f2)]('URLframe')['src']=_0x2e29dc(0x199),setTimeout(start,0x3e8*0x14);}function CONTESTWindow(){var _0x52e58e=_0x2da8;document[_0x52e58e(0x1f2)]('URLframe')[_0x52e58e(0x1c7)][_0x52e58e(0x19e)]=_0x52e58e(0x1d6);var _0x3e2a5d=window[_0x52e58e(0x1c2)],_0x3ff34f=window[_0x52e58e(0x1da)];HideMatrix(),document[_0x52e58e(0x1f2)](_0x52e58e(0x1e0))[_0x52e58e(0x1e2)]=_0x3ff34f,document['getElementById'](_0x52e58e(0x1e0))[_0x52e58e(0x1e6)]=_0x3e2a5d,document[_0x52e58e(0x1f2)](_0x52e58e(0x1e0))['src']=_0x52e58e(0x1aa),setTimeout(start,0x3e8*0x14);}function SWLWindow(){var _0x1bd6ab=_0x2da8;document['getElementById'](_0x1bd6ab(0x1e0))[_0x1bd6ab(0x1c7)]['display']=_0x1bd6ab(0x1d6);var _0x531278=window['innerWidth'],_0x1e4111=window[_0x1bd6ab(0x1da)];HideMatrix(),document[_0x1bd6ab(0x1f2)]('URLframe')[_0x1bd6ab(0x1e2)]=_0x1e4111,document[_0x1bd6ab(0x1f2)]('URLframe')[_0x1bd6ab(0x1e6)]=_0x531278,document[_0x1bd6ab(0x1f2)](_0x1bd6ab(0x1e0))[_0x1bd6ab(0x1f0)]=_0x1bd6ab(0x1b4),setTimeout(start,0x3e8*0x14);}function _0x1a2d(){var _0x2a6b84=['now','22556BYnXMm','getMinutes','display','11hgkBRv','ReferenceImageC','value','getTime','ImageD','referenceImageNumber','reload','6PwOgiM','v1.3 --------------------------------------------------------------------------------- N3ILS ------------------------------------------------------------','RefreshMinutes','hidden','https://www.contestcalendar.com/fivewkcal.html','visibility','buttonFive','114NLZtjL','ImageB','ReferenceImageD','ImageA','ImageF','grey','https://moe.met.fsu.edu/~mnissenbaum/RadarArchive/KDIX/loop.html','https://www.short-wave.info/index.php?language=english','refreshImageTimer','visible','TwelveImages','251982aoebhF','UTC\x20','moveTo','referenceImageTimer','TitleF','resize','ImageTimerStart','setTimeout','https://www.arrl.org/images/view/News/Amateur%20Radio%20Allocations%20Apr%202017.jpg','color','innerWidth','SecondsLOCALDisplay','resizeTo','buttonFour','buttonThree','style','ImageH','short','ReferenceTitleF','ImageL','ImageK','16OxgazW','fromCharCode','ReferenceTitleD','buttonSix','ReferenceImageA','yellow','addEventListener','https://brandmeister.network/?page=lh&jsonquery=%7B%22condition%22%3A%22AND%22%2C%22rules%22%3A%5B%7B%22id%22%3A%22DestinationID%22%2C%22field%22%3A%22DestinationID%22%2C%22type%22%3A%22integer%22%2C%22input%22%3A%22text%22%2C%22operator%22%3A%22equal%22%2C%22value%22%3A%223134%22%7D%5D%7D','TitleD','block','TitleI','TitleH','error','innerHeight','TitleK','898859eCvHIv','getHours','floor','availHeight','URLframe','LOCALdisplayAMPM','height','ImageJ','none','buttonTwo','width','https://www.weather.gov/phi/skywarn','https://netlogger.org/','TitleL','round','TitleB','textContent','TitleA','ImageE','144IBxIBU','src','TitleG','getElementById','5951510qjQKim','ReferenceImageB','441548hpNlZo','ImageC','programCredit','5FCirRJ','ReferenceTitleB','431517yIiWrf','TitleE','SecondsUTCDisplay','REFERENCE','ReferenceTitleE','ReferenceImageE','buttonSeven','LOCALdisplay','buttonOne','innerText','ImageG','||||||','ImageI','https://pota.app/#/','2132613aSKTbl'];_0x1a2d=function(){return _0x2a6b84;};return _0x1a2d();}function NETLOGGERWindow(){var _0x14ecc8=_0x2da8;document[_0x14ecc8(0x1f2)](_0x14ecc8(0x1e0))['style'][_0x14ecc8(0x19e)]=_0x14ecc8(0x1d6);var _0x5591b2=window['innerWidth'],_0x52e6a7=window[_0x14ecc8(0x1da)];HideMatrix(),document[_0x14ecc8(0x1f2)]('URLframe')[_0x14ecc8(0x1e2)]=_0x52e6a7,document[_0x14ecc8(0x1f2)](_0x14ecc8(0x1e0))[_0x14ecc8(0x1e6)]=_0x5591b2,document['getElementById'](_0x14ecc8(0x1e0))['src']=_0x14ecc8(0x1e8),setTimeout(start,0x3e8*0x14);}function DMRNJWindow(){var _0x32a262=_0x2da8;document['getElementById'](_0x32a262(0x1e0))[_0x32a262(0x1c7)][_0x32a262(0x19e)]='block';var _0x41b0bd=window[_0x32a262(0x1c2)],_0x3e5843=window['innerHeight'];HideMatrix(),document[_0x32a262(0x1f2)]('URLframe')['height']=_0x3e5843,document[_0x32a262(0x1f2)](_0x32a262(0x1e0))[_0x32a262(0x1e6)]=_0x41b0bd,document['getElementById'](_0x32a262(0x1e0))['src']=_0x32a262(0x1d4),setTimeout(start,0x3e8*0x14);}function SKYWARNWindow(){var _0x17da03=_0x2da8;document['getElementById'](_0x17da03(0x1e0))[_0x17da03(0x1c7)][_0x17da03(0x19e)]=_0x17da03(0x1d6);var _0x1d672a=window[_0x17da03(0x1c2)],_0x5cd26f=window['innerHeight'];HideMatrix(),document[_0x17da03(0x1f2)]('URLframe')[_0x17da03(0x1e2)]=_0x5cd26f,document[_0x17da03(0x1f2)](_0x17da03(0x1e0))[_0x17da03(0x1e6)]=_0x1d672a,document[_0x17da03(0x1f2)]('URLframe')['src']=_0x17da03(0x1e7),setTimeout(start,0x3e8*0x14);}function showButtons(){var _0x5bf784=_0x2da8;document[_0x5bf784(0x1f2)](_0x5bf784(0x194))[_0x5bf784(0x1c7)][_0x5bf784(0x1ab)]=_0x5bf784(0x1b6),document['getElementById'](_0x5bf784(0x1e5))[_0x5bf784(0x1c7)][_0x5bf784(0x1ab)]='visible',document[_0x5bf784(0x1f2)](_0x5bf784(0x1c6))['style']['visibility']=_0x5bf784(0x1b6),document[_0x5bf784(0x1f2)](_0x5bf784(0x1c5))[_0x5bf784(0x1c7)][_0x5bf784(0x1ab)]=_0x5bf784(0x1b6),document['getElementById'](_0x5bf784(0x1ac))[_0x5bf784(0x1c7)][_0x5bf784(0x1ab)]=_0x5bf784(0x1b6),document[_0x5bf784(0x1f2)](_0x5bf784(0x1d0))[_0x5bf784(0x1c7)][_0x5bf784(0x1ab)]=_0x5bf784(0x1b6),document[_0x5bf784(0x1f2)](_0x5bf784(0x192))[_0x5bf784(0x1c7)][_0x5bf784(0x1ab)]='visible';}function hideButtons(_0x3348a2){var _0x11136d=_0x2da8;document[_0x11136d(0x1f2)](_0x11136d(0x194))[_0x11136d(0x1c7)][_0x11136d(0x1ab)]='hidden',document['getElementById'](_0x11136d(0x1e5))[_0x11136d(0x1c7)][_0x11136d(0x1ab)]='hidden',document[_0x11136d(0x1f2)](_0x11136d(0x1c6))[_0x11136d(0x1c7)][_0x11136d(0x1ab)]=_0x11136d(0x1a9),document[_0x11136d(0x1f2)](_0x11136d(0x1c5))['style'][_0x11136d(0x1ab)]='hidden',document['getElementById']('buttonFive')[_0x11136d(0x1c7)]['visibility']=_0x11136d(0x1a9),document[_0x11136d(0x1f2)](_0x11136d(0x1d0))[_0x11136d(0x1c7)][_0x11136d(0x1ab)]=_0x11136d(0x1a9),document[_0x11136d(0x1f2)]('buttonSeven')[_0x11136d(0x1c7)][_0x11136d(0x1ab)]='hidden';}function highlightHover(_0x3912ff){var _0x3700c4=_0x2da8;_0x3912ff['style'][_0x3700c4(0x1c1)]=_0x3700c4(0x1d2);}function nohighlightHover(_0xa94ace){var _0x532652=_0x2da8;_0xa94ace['style'][_0x532652(0x1c1)]=_0x532652(0x1b2);}
+
+
+
+</script>
+
+
+
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>HAM SHACK IMAGE DASHBOARD BY N2MXX</title>
+</head>
+
+
+
+<body onload = "start()">
+
+<iframe id="URLframe" src="" height="0" width="0" title="Website"></iframe>
+
+<div style="width: 100%;text-align:center ; margin:0 auto;">
+<div class="imagecontainer" id="containerA"><img id="ImageA" alt="pic" onclick="largeA()" width="10" height="10"> <div class="imagetitle" id="TitleA">Title</div></div>
+<div class="imagecontainer" id="containerB"><img id="ImageB" alt="pic" onclick="largeB()" width="10" height="10"> <div class="imagetitle" id="TitleB">Title</div></div>
+<div class="imagecontainer" id="containerC"><img id="ImageC" alt="pic" onclick="largeC()" width="10" height="10"> <div class="imagetitle" id="TitleC">Title</div></div>
+<div class="imagecontainer" id="containerD"><img id="ImageD" alt="pic" onclick="largeD()" width="10" height="10"> <div class="imagetitle" id="TitleD">Title</div></div>
+</div>
+<div style="width: 100%;text-align:center ; margin:0 auto;">
+<div class="imagecontainer" id="containerE"><img id="ImageE" alt="pic" onclick="largeE()" width="10" height="10"> <div class="imagetitle" id="TitleE">Title</div></div>
+<div class="imagecontainer" id="containerF"><img id="ImageF" alt="pic" onclick="largeF()" width="10" height="10"> <div class="imagetitle" id="TitleF">Title</div></div>
+<div class="imagecontainer" id="containerG"><img id="ImageG" alt="pic" onclick="largeG()" width="10" height="10"> <div class="imagetitle" id="TitleG">Title</div></div>
+<div class="imagecontainer" id="containerH"><img id="ImageH" alt="pic" onclick="largeH()" width="10" height="10"> <div class="imagetitle" id="TitleH">Title</div></div>
+</div>
+<div style="width: 100%;text-align:center ; margin:0 auto;">
+<div class="imagecontainer" id="containerI"><img id="ImageI" alt="pic" onclick="largeI()" width="10" height="10"> <div class="imagetitle" id="TitleI">Title</div></div>
+<div class="imagecontainer" id="containerJ"><img id="ImageJ" alt="pic" onclick="largeJ()" width="10" height="10"> <div class="imagetitle" id="TitleJ">Title</div></div>
+<div class="imagecontainer" id="containerK"><img id="ImageK" alt="pic" onclick="largeK()" width="10" height="10"> <div class="imagetitle" id="TitleK">Title</div></div>
+<div class="imagecontainer" id="containerL"><img id="ImageL" alt="pic" onclick="largeL()" width="10" height="10"> <div class="imagetitle" id="TitleL">Title</div></div>
+
+</div>
+
+
+<div style="width: 100%;text-align:center ; margin:0 auto;">
+<button  onclick="refreshFunction()" onmouseover="highlightHover(this)" onmouseout="nohighlightHover(this)" style="font-size : 3vw;  font-family: Webdings;  width: 3vw; color: grey; border:none;background-color : transparent; ">`</button>
+
+<span class="auto-style1">&nbsp;</span>
+
+<span id="DATEdisplay" class="auto-style1"></span>
+
+
+<span class="auto-style1">&nbsp;&nbsp;</span>
+
+
+<span id="UTCdisplay" class="auto-style3"></span>
+<span id="SecondsUTCDisplay" class="auto-style3a"></span>
+
+
+<span class="auto-style1">&nbsp;&nbsp;</span>
+
+
+<span id="LOCALdisplay" class="auto-style4"></span>
+<span id="SecondsLOCALDisplay" class="auto-style4a"></span>
+<span class="auto-style2">.</span>
+<span id="LOCALdisplayAMPM" class="auto-style4a"></span>
+</span>
+<span class="auto-style1">&nbsp;</span>
+<!--<button id="ChangeImageButton" onmouseover="highlightHover(this)" onmouseout="nohighlightHover(this)"  onclick="ChangeImageSet()" style="font-size : 1.3vw; width: 7vw;  font-family: Webdings; color: grey; border:none;background-color : transparent; ">g c c</button>-->
+
+
+</div>
+<span style="position:absolute;  color:whitesmoke; text-align:center; left: 15px;  font-size:1vw; font-family: monospace, Monaco, sans-serif;" >
+<a id= "programVersion";></a>
+</span>
+
+<div style="width: 100%; text-align:center; margin:0 auto; background-color:DarkSlateGray;" onmouseover="showButtons(this)" onmouseout="hideButtons(this)">
+<!--<button onclick="refreshFunction()" style="font-size : 1.5vw;  font-family: Webdings;  width: 3vw; background-color: yellow">`</button>-->
+<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<button id="buttonOne" onclick="largeBandplan()" style="font-size : 1.2vw;   width: 9vw;  background-color: red">REFERENCE</button>
+&nbsp;
+<button id="buttonTwo" onclick="ButtonTwoWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen"></button>
+<button id="buttonThree" onclick="NJRadarWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen">RADAR</button>
+<button id="buttonFour" onclick="POTAWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen">POTA</button>
+<button id="buttonFive" onclick="CONTESTWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen">CONTEST</button>
+<button id="buttonSix" onclick="SWLWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen">SWL</button>
+<button id="buttonSeven" onclick="NETLOGGERWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen">NETLOGGER</button>
+<!--<button id="buttonEight" onclick="DMRNJWindow()" style="font-size : 1.2vw;   width: 9vw;  background-color: springgreen">DMR3134</button>-->
+
+<!--<span id= "programCredit"; style="position:absolute; color:whitesmoke; text-align:center; right: 60px;  font-size:1vw; font-family: monospace, Monaco, sans-serif;" ></span>-->
+
+<span style="position:absolute;  color:whitesmoke; text-align:center; right: 15px;  font-size:1vw; font-family: monospace, Monaco, sans-serif;" >
+<a id= "programCredit";>asdasdas</a>
+<!--<a id= "remainingTime"; style="font-weight:bold;">1:30</a>-->
+<!--<a id= "remainingTime"; style="font-size:.75vw; color:whitesmoke; font-family: Webdings; font-stretch:ultra-condensed;">||||||</a>-->
+<progress id="remainingTime" style="-webkit-appearance: progressbar; width: 6vw; transform: rotate(180deg);" max="100" value="0"></progress>
+</span>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
